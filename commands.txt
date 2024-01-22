@@ -9,3 +9,33 @@ $ python
 >>> db.session.commit()
 >>> User.query.all()
 [User('Prajwal', 'p@demo.com', 'default.jpg')]
+>>> user = User.query.first()
+>>> user
+User('Prajwal', 'p@demo.com', 'default.jpg')
+>>> user.query.filter_by(username='Ram').all()
+[User('Ram', 'r@demo.com', 'default.jpg')]
+>>> user.id
+1
+>>> user.username
+'Prajwal'
+>>> user.query.get(1)
+<stdin>:1: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+User('Prajwal', 'p@demo.com', 'default.jpg')
+>>> post_1 = Post(title='Blog1', content='First Post Content', user_id=user.id)
+>>> post_2 = Post(title='Blog2', content='Second Post Content', user_id=user.id)
+>>> db.session.add(post_1)
+>>> db.session.add(post_2)
+>>> db.session.commit()
+>>> user.posts
+[Post('Blog1', '2024-01-22 12:55:03.648619'), Post('Blog2', '2024-01-22 12:55:03.648634')]
+>>> post=Post.query.first()
+>>> Post.query.all()
+[Post('Blog1', '2024-01-22 12:55:03.648619'), Post('Blog2', '2024-01-22 12:55:03.648634')]
+>>> post
+Post('Blog1', '2024-01-22 12:55:03.648619')
+>>> db.drop_all()
+>>> db.create_all()
+>>> User.query.all()
+[]
+>>> Post.query.all()
+[]
