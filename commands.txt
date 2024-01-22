@@ -1,0 +1,11 @@
+$ source venv/bin/activate
+$ python
+>>> from flaskdb import app
+>>> from flaskdb import db
+>>> db.create_all()
+>>> from flaskdb import User, Post
+>>> user_1 = User(username='Prajwal', email='p@demo.com', password='password')
+>>> db.session.add(user_1)
+>>> db.session.commit()
+>>> User.query.all()
+[User('Prajwal', 'p@demo.com', 'default.jpg')]
