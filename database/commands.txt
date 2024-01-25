@@ -1,5 +1,13 @@
 $ source venv/bin/activate
-$ python
+$ cd database
+
+$ set FLASK_APP=flaskblog.py
+$ set FLASK_ENV=development
+
+# RUn Flask App
+$ python3 flaskdb.py
+
+$ python3
 >>> from flaskdb import app
 >>> from flaskdb import db
 >>> db.create_all()
