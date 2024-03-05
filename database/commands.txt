@@ -1,12 +1,20 @@
 $ source venv/bin/activate
+$ pip3 install -r requirements.txt
 $ cd database
 
 $ set FLASK_APP=flaskblog.py
 $ set FLASK_ENV=development
 
-# RUn Flask App
+# Generate new token for SECRET_KEY
+$ python3
+>>> import secrets
+>>> secrets.token_hex(16)
+
+
+# Run Flask App
 $ python3 flaskdb.py
 
+# Open new terminal
 $ python3
 >>> from flaskdb import app
 >>> from flaskdb import db
